@@ -1,7 +1,8 @@
 package p3289;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Arrays;
 
 /*
     
@@ -17,24 +18,19 @@ import java.util.Map;
 class Solution {
     public int[] getSneakyNumbers(int[] nums) {
         int[] ans = new int[2];
-
-        // Create a hashmap
-        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
-        for (int n : nums) {
-            map.put(n, map.getOrDefault(n, 0) + 1);
-        }
-
-        // Iterate through hashmap and find keys with value 2
+        HashSet<Integer> set = new HashSet<Integer>();
         int index = 0;
-        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            if (entry.getValue() == 2) {
-                // Add those keys to answer array
-                ans[index++] = entry.getKey();
-                if (index == 2)
-                    break; // Exit early once we have two keys
+
+        for (int n : nums) {
+            if (set.contains(n)) {
+                ans[index] = n;
+                index++;
+                if (index == 2) break;
             }
+            set.add(n);
         }
 
+        System.out.print(Arrays.toString(ans));
         return ans;
     }
 }
