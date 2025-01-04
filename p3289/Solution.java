@@ -23,7 +23,8 @@ class Solution {
             if (set.contains(n)) {
                 ans[index] = n;
                 index++;
-                if (index == 2) break;
+                if (index == 2)
+                    break;
             }
             set.add(n);
         }
