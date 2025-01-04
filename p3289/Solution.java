@@ -1,8 +1,6 @@
 package p3289;
 
 import java.util.HashSet;
-import java.util.Set;
-import java.util.Arrays;
 
 /*
     
@@ -30,7 +28,6 @@ class Solution {
             set.add(n);
         }
 
-        System.out.print(Arrays.toString(ans));
         return ans;
     }
 }
