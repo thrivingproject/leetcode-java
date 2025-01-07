@@ -13,8 +13,10 @@ class Solution {
         // Check if each word is consistent
         for (String word : words) {
             boolean consistent = true;
-            for (char c : word.toCharArray()) {
-                if (!allowedChars[c - 'a']) {
+            int wordLen = word.length();
+            // Note: using charAt(i) is faster than word.toCharArray()
+            for (int i = 0; i < wordLen; i++) {
+                if (!allowedChars[word.charAt(i) - 'a']) {
                     consistent = false;
                     break;
                 }
