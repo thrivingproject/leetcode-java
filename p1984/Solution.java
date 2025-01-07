@@ -3,20 +3,25 @@ package p1984;
 class Solution {
     public int countConsistentStrings(String allowed, String[] words) {
         int ans = 0;
-        // Loop through each word in the words array
+
+        // Make a boolean array of allowed characters
+        boolean[] allowedChars = new boolean[26];
+        for (char c : allowed.toCharArray()) {
+            allowedChars[c - 'a'] = true;
+        }
+
+        // Check if each word is consistent
         for (String word : words) {
             boolean consistent = true;
-            // Loop through each character in the allowed string
             for (char c : word.toCharArray()) {
-                // Check if the character is not in the word
-                if (allowed.indexOf(c) == -1) {
-                    // Stop checking the word and set consistent to false
+                if (!allowedChars[c - 'a']) {
                     consistent = false;
                     break;
                 }
             }
-            if (consistent)
+            if (consistent) {
                 ans++;
+            }
         }
         return ans;
     }
